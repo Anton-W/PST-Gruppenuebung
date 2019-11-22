@@ -1,24 +1,23 @@
-%###########################################################################################
+%#################################################################################################################################################
 %
-% PST Gruppenuebung
+% Funktion zur Interpretation eines RGB Farbcodes. Wandelt eine Vektor mit RGB Farbwerten in die entsprechende Farbe um.
+%
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % Aufgabe Sensorinterpretation
 % 22.11.2019
 % V2
 %
-% Interpretieren der Farbcodes, die der Sensor ausgiebt in tatsaechliche Farben
-%
-%###########################################################################################
+%#################################################################################################################################################
 
-%Bestimmung groesster, kleinster und mittlerer Farbwert und Positionen im Vektor:
+% Bestimmung groesster, kleinster und mittlerer Farbwert und Positionen im Vektor:
 
 function farbe = farberkennung(farbwerte)
 
-
     [Mini] = min(farbwerte);             % Bestimmen des kleinesten Wertes
 
-    [Maxi, IndMax] = max(farbwerte);     % Bestimmen des groe�ten Wertes(Maxi) und seine Stelle(IndMax) 
+    [Maxi, IndMax] = max(farbwerte);     % Bestimmen des groeßten Wertes(Maxi) und seine Stelle(IndMax) 
            
-
+           
     if farbwerte(1) ~= Mini && farbwerte(1) ~= Maxi      % Bestimmung des mittleren Wertes im Vektor
         mittel = farbwerte(1);
     elseif farbwerte(2) ~= Mini && farbwerte(2) ~= Maxi
@@ -27,17 +26,16 @@ function farbe = farberkennung(farbwerte)
         mittel = farbwerte(3);
     end
     
- %##########################################################################################
+ %################################################################################################################################################
 
  % Bestimmen der Differenzen zwischen den Farbwerten zur Einteilung in eventuelle Sonderfaelle:
 
-    differenzGK = Maxi - Mini;           % Differenz groe�ter / kleinster Wert
-    differenzMK = Maxi - mittel;         % Differenz groe�ter / mittlerer Wert
+    differenzGK = Maxi - Mini;           % Differenz groeßter / kleinster Wert
+    differenzMK = Maxi - mittel;         % Differenz groeßter / mittlerer Wert
 
- %#########################################################################################
+ %################################################################################################################################################
 
  % Einteilung in die vier Kategorien entsprechend der Farbwerte
-
 
     if differenzGK <= 25                           % Pruefung auf Sonderfall Schwarz (differenz aller Zahlen <25)
         farbe = 'black';
