@@ -3,6 +3,7 @@
 % PST Gruppenuebung
 % Aufgabe Sensorinterpretation
 % 22.11.2019
+% V2
 %
 % Interpretieren der Farbcodes, die der Sensor ausgiebt in tatsaechliche Farben
 %
@@ -12,32 +13,15 @@
 
 function farbe = farberkennung(farbwerte)
 
-    groesste = farbwerte(1);
-    kleinste = farbwerte(1);
 
-    if farbwerte(2) < kleinste      % Bestimmen des kleinesten Wertes durch vergleichen
-        kleinste = farbwerte(2);
-    end
+    [Mini] = min(farbwerte);             % Bestimmen des kleinesten Wertes
 
-    if farbwerte(3) < kleinste 
-        kleinste = farbwerte(3);
-    end
+    [Maxi, IndMax] = max(farbwerte);     % Bestimmen des groeßten Wertes(Maxi) und seine Stelle(IndMax) 
+           
 
-    stelledom = 1;                  % Position der groeßten Stelle
-
-    if farbwerte(2) > groesste      % Bestimmen des groeßten Wertes und seine Position im Vektor
-        groesste = farbwerte(2);
-        stelledom = 2;
-    end
-
-    if farbwerte(3) > groesste 
-        groesste = farbwerte(3);
-        stelledom = 3;              % Position der groeßten stelle
-    end
-
-    if farbwerte(1) ~= kleinste && farbwerte(1) ~= groesste      % Bestimmung des mittleren Wertes im Vektor
+    if farbwerte(1) ~= Mini && farbwerte(1) ~= Maxi      % Bestimmung des mittleren Wertes im Vektor
         mittel = farbwerte(1);
-    elseif farbwerte(2) ~= kleinste && farbwerte(2) ~= groesste
+    elseif farbwerte(2) ~= Mini && farbwerte(2) ~= Maxi
         mittel = farbwerte(2);
     else
         mittel = farbwerte(3);
@@ -47,9 +31,8 @@ function farbe = farberkennung(farbwerte)
 
  % Bestimmen der Differenzen zwischen den Farbwerten zur Einteilung in eventuelle Sonderfaelle:
 
-    differenzGK = groesste - kleinste;             % Differenz groeßter / kleinster Wert
-    differenzMK = groesste - mittel;               % Differenz groeßter / mittlerer Wert
-    %differenzmk = mittel-kleinste;                %(differenz mittel kleinste) >>unnötig<<
+    differenzGK = Maxi - Mini;           % Differenz groeßter / kleinster Wert
+    differenzMK = Maxi - mittel;         % Differenz groeßter / mittlerer Wert
 
  %#########################################################################################
 
@@ -57,19 +40,17 @@ function farbe = farberkennung(farbwerte)
 
 
     if differenzGK <= 25                           % Pruefung auf Sonderfall Schwarz (differenz aller Zahlen <25)
-        %disp('Black');  
         farbe = 'black';
     elseif differenzMK < 31 && differenzMK > 25    % Pruefung auf Sonderfall Blau wenn: beide hohen Werte nah (diff<31) aneinander liegen
-        % disp('blue'); 
         farbe = 'blue';
-    elseif stelledom == 1                          % Entscheidung: Rot, entsprechend dominanter Rot-Stelle
-        % disp('Red');  
-        farbe = 'red';
-    elseif stelledom == 2                          % Entscheidung: Gruen, entsprechend dominater Gruen-Stelle
-        %disp('Green');
-        farbe = 'green';
-    elseif stelledom == 3                          % Entscheidung: Blau, entsprechend dominater Blau-Stelle
-        %disp('Blue');
-        farbe = 'blue';
+    else
+        switch IndMax
+            case 1
+                farbe = 'red';     % Entscheidung: Rot, entsprechend dominanter Rot-Stelle
+            case 2
+                farbe = 'green';   % Entscheidung: Gruen, entsprechend dominater Gruen-Stelle
+            case 3
+                farbe = 'blue';    % Entscheidung: Blau, entsprechend dominater Blau-Stelle
+        end
     end
 end
