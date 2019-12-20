@@ -1,39 +1,54 @@
-%##########################################################################
+%###############################################################################
 %
-% Funktion zum übersetzten von Kartesischen Koordinaten in Winkel
+% Funktion zum universalen Bewegen des Roboters
+% Eingabe: x,y,z Koordinaten eines Punktes, Winkel der Hand zum Boden
+% Koordinaten werden in Winkel des Roboterarms Ã¼bersetzt, um gezielt Punkte anzusteuern
+% Der Winkel kann verwendet werden, um die Hand je nach Aufgabe verschieden auszurichten
 %
-% PST Gruppenübung
+% PST GruppenÃ¼bung - Paul BÃ¶hm, Bennet Gossen, Lasse JÃ¤ger, Anton WÃ¶ste
 % V1: 19.12.2019
+% V2:
 %
-%
-%##########################################################################
+%###############################################################################
 
-function gelenkwinkel(x,y,z,winkel,rob)
-    a1 = 166;     % Länge: shoulder to elbow
-    a2 = 218;     % Länge: elbow to wrist
-    a3 = 101;     % Länge: wrist to finger
-    a4 = 28.9;    % Länge: finger bis grippoint
-    L = sqrt((122-z)^2+(x^2+y^2));   % Abstand Armbeginn Unterarmende (ohne Handgelenk),      zur Berechnung nötig
-    
- phi = acos((a1^2+L^2-a2^2)/(2*a1*L))*180/pi;   % Winkel, bildet ein Dreieck mit elbow und L, zur Berechnung nötig
- 
- delta = acos((122-z)/L)*180/pi;   % Winkel zwischen L und Base,                              zur Berechnung nötig
- 
- F_angle = 180;  % Variable zum Einstellen des (greif)winkels 180 ? greifen, 90 ? scannen, soll später "winkel" verwenden können
- 
+function Rob_move(x,y,z,winkel,rob)
+    a1 = 166;     % LÃ¤nge: shoulder to elbow
+    a2 = 218;     % LÃ¤nge: elbow to wrist
+    a3 = 101;     % LÃ¤nge: wrist to finger
+    a4 = 28.9;    % LÃ¤nge: finger bis grippoint
+
+    rotY = y;     % getrennter y-Wert zum rotieren der Base
+    rotX = x;     % getrennter x-Wert zum rotieren der Base
+
+    x = abs(x) - cos(winkel)*(a3+a4);    % neuer x-Wert in AbhÃ¤ngigkeit des Hand-winkels (berÃ¼cksichtigt die LÃ¤nge des Armes)
+    y = abs(y) - cos(winkel)*(a3+a4);    % neuer y-Wert ""
+
+    z = (sin(winkel)*(a3+a4)) + 12;   % z-Koordinate des grippoints unter BerÃ¼cksichtigung des Hand-winkels
+
+    hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 180=scannen
+
+%###############################################################################
+
+  L = sqrt((122-z)^2+(x^2+y^2));   % Abstand Armbeginn Unterarmende (ohne Handgelenk),      zur Berechnung nÃ¶tig
+
+  phi = acos((a1^2+L^2-a2^2)/(2*a1*L))*180/pi;   % Winkel, bildet ein Dreieck mit elbow und L, zur Berechnung nÃ¶tig
+
+  delta = acos((122-z)/L)*180/pi;   % Winkel zwischen L und Base,                              zur Berechnung nÃ¶tig
  
  %#########################################################################
- 
- baserot = atan(y/x)*180/pi; %z=141.9! fürs greifen
-    
- wrist = baserot; % counterrotation des gelenks um weiterhin greifen zu können(nur beim greifen zu verwenden!)
- 
+
+  baserot = atan(rotY/rotX)*180/pi;  %z=141.9! fÃ¼rs greifen
+
+ if winkel == 90;     % 90Â° = Greifbedingung
+   wrist = baserot;   % counterrotation des gelenks um weiterhin greifen zu kÃ¶nnen (nur zum greifen benÃ¶tigt)
+ end
+
  elbow = (pi - acos((a1^2+a2^2-L^2)/(2*a1*a2)))*180/pi; % elbow-Winkel
- 
+
  shoulder = 180 - delta - phi; % shoulder-winkel
- 
- hand = F_angle - shoulder - elbow; % wrist-winkel, variabel durch F_angle, für verschiedene Greifwinkel (180° zum 90° greifen) 
- 
+
+ hand = hand2groundAng - shoulder - elbow; % wrist-winkel, variabel durch F_angle, fÃ¼r verschiedene Greifwinkel (180Â° zum 90Â° greifen)
+
     disp([shoulder, elbow, hand])
     rob.moveAngles([1:5],[baserot,shoulder,elbow,hand,wrist],-1)
 end
