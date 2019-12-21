@@ -49,6 +49,6 @@ function Rob_move(x,y,z,winkel,rob)
 
  hand = hand2groundAng - shoulder - elbow; % wrist-winkel, variabel durch F_angle, für verschiedene Greifwinkel (180° zum 90° greifen)
 
-    disp([shoulder, elbow, hand])
-    rob.moveAngles([1:5],[baserot,shoulder,elbow,hand,wrist],-1)
+  disp([shoulder, elbow, hand])
+  %rob.moveAngles([1:5],[baserot,shoulder,elbow,hand,wrist],-1)
 end
