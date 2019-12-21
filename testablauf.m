@@ -3,6 +3,8 @@
 % gescripteter Ablauf, der zwei Würfel tauscht
 % 20.12.2019
 %
+% Z - koordinaten müssen für V2 angepasst werden!
+%
 %##########################################################################
 
 function testablauf(rob)
