@@ -41,26 +41,26 @@ function Rob_move(x, y, z, winkel, rob)
 
  %######################################################################################################################
 
-  % Berechnung der Gelenk-Winkel für den Roboter:
+   % Berechnung der Gelenk-Winkel für den Roboter:
 
-	  baserot = atan(rotY / rotX) * (180 / pi);  %z=141.9! fürs greifen
+    baserot = atan(rotY / rotX) * (180 / pi);  %z=141.9! fürs greifen
 
-	  if winkel == 90;       % 90° = Greifbedingung
-		  wrist = baserot;   % counterrotation der wrist um weiterhin greifen zu können (nur zum greifen benötigt)
-	  end
+    if winkel == 90;       % 90° = Greifbedingung
+      wrist = baserot;   % counterrotation der wrist um weiterhin greifen zu können (nur zum greifen benötigt)
+    end
 
-	  elbow = (pi - acos((a1^2 + a2^2 - L^2) / (2 * a1 * a2))) * (180 / pi); % elbow-Winkel
+    elbow = (pi - acos((a1^2 + a2^2 - L^2) / (2 * a1 * a2))) * (180 / pi); % elbow-Winkel
 
-	  shoulder = 180 - delta - phi; % shoulder-winkel
+    shoulder = 180 - delta - phi; % shoulder-winkel
 
-	  hand = hand2groundAng - shoulder - elbow; % wrist-winkel, variabel durch hand2groundAng
+    hand = hand2groundAng - shoulder - elbow; % wrist-winkel, variabel durch hand2groundAng
 
  %######################################################################################################################
 
   % Ausgabe & Movement-Command:
 
-	  disp([shoulder, elbow, hand])
+    disp([shoulder, elbow, hand])
 
-	  rob.moveAngles([1 : 5], [baserot, shoulder, elbow, hand, wrist], -1)
+    rob.moveAngles([1 : 5], [baserot, shoulder, elbow, hand, wrist], -1)
 
 end
