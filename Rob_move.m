@@ -23,7 +23,7 @@ function Rob_move(x,y,z,winkel,rob)
     x = abs(x) - cos(winkel)*(a3+a4);    % neuer x-Wert in Abhängigkeit des Hand-winkels (berücksichtigt die Länge des Armes)
     y = abs(y) - cos(winkel)*(a3+a4);    % neuer y-Wert ""
 
-    z = (sin(winkel)*(a3+a4)) + 12;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
+    z = (sin(winkel)*(a3+a4)) + z;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
 
     hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 180=scannen
 
@@ -35,7 +35,7 @@ function Rob_move(x,y,z,winkel,rob)
 
   delta = acos((122-z)/L)*180/pi;   % Winkel zwischen L und Base,                              zur Berechnung nötig
 
- %#########################################################################
+%#########################################################################
 
  baserot = atan(rotY/rotX)*180/pi;  %z=141.9! fürs greifen
 
