@@ -35,9 +35,9 @@ function Rob_move(x, y, z, winkel, rob)
 
     L = sqrt((122 - z)^2 + ( x^2 + y^2));   % Abstand Armbeginn Unterarmende (ohne Handgelenk)
 
-	  phi = acos((a1^2 + L^2 - a2^2) / (2 * a1 * L)) * (180 / pi);   % Winkel, bildet ein Dreieck mit elbow und L
+    phi = acos((a1^2 + L^2 - a2^2) / (2 * a1 * L)) * (180 / pi);   % Winkel, bildet ein Dreieck mit elbow und L
 
-	  delta = acos((122 - z) / L) * (180 / pi);   % Winkel zwischen L und Base
+    delta = acos((122 - z) / L) * (180 / pi);   % Winkel zwischen L und Base
 
  %######################################################################################################################
 
