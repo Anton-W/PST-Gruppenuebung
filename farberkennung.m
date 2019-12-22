@@ -1,4 +1,4 @@
-%#################################################################################################################################################
+%#######################################################################################################################
 %
 % Funktion zur Interpretation eines RGB Farbcodes. Wandelt eine Vektor mit RGB Farbwerten in die entsprechende Farbe um.
 %
@@ -7,7 +7,7 @@
 % 22.11.2019
 % V2
 %
-%#################################################################################################################################################
+%#######################################################################################################################
 
 % Bestimmung groesster, kleinster und mittlerer Farbwert und Positionen im Vektor:
 
@@ -26,20 +26,20 @@ function farbe = farberkennung(farbwerte)
         mittel = farbwerte(3);
     end
     
- %################################################################################################################################################
+ %######################################################################################################################
 
  % Bestimmen der Differenzen zwischen den Farbwerten zur Einteilung in eventuelle Sonderfaelle:
 
     differenzGK = Maxi - Mini;           % Differenz groeßter / kleinster Wert
     differenzMK = Maxi - mittel;         % Differenz groeßter / mittlerer Wert
 
- %################################################################################################################################################
+ %######################################################################################################################
 
  % Einteilung in die vier Kategorien entsprechend der Farbwerte
 
     if differenzGK <= 25                           % Pruefung auf Sonderfall Schwarz (differenz aller Zahlen <25)
         farbe = 'black';
-    elseif differenzMK < 31 && differenzMK > 25    % Pruefung auf Sonderfall Blau wenn: beide hohen Werte nah (diff<31) aneinander liegen
+    elseif differenzMK < 31 && differenzMK > 25    % Pruefung auf Sonderfall Blau wenn: beide hohen Werte nah (diff<31)
         farbe = 'blue';
     else
         switch IndMax
