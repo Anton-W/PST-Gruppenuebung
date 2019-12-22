@@ -22,10 +22,10 @@ function Rob_move(x, y, z, winkel, rob)
     rotY = y;     % getrennter y-Wert zum rotieren der Base
     rotX = x;     % getrennter x-Wert zum rotieren der Base
 
-    x = abs(x) - cos(winkel) * (a3 + a4);   % neuer x- und y-Werte in Abhängigkeit von Hand-winkel
-    y = abs(y) - cos(winkel) * (a3 + a4);   % Länge des Arms wird berücksichtigt
+    x = abs(x) - cosd(winkel) * (a3 + a4);   % neuer x- und y-Werte in Abhängigkeit von Hand-winkel
+    y = abs(y) - cosd(winkel) * (a3 + a4);   % Länge des Arms wird berücksichtigt
 
-    z = (sin(winkel) * (a3 + a4)) + z;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
+    z = (sind(winkel) * (a3 + a4)) + z;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
 
     hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 180=scannen
 
@@ -35,21 +35,21 @@ function Rob_move(x, y, z, winkel, rob)
 
     L = sqrt((122 - z)^2 + ( x^2 + y^2));   % Abstand Armbeginn Unterarmende (ohne Handgelenk)
 
-    phi = acos((a1^2 + L^2 - a2^2) / (2 * a1 * L)) * (180 / pi);   % Winkel, bildet ein Dreieck mit elbow und L
+    phi = acosd((a1^2 + L^2 - a2^2) / (2 * a1 * L));   % Winkel, bildet ein Dreieck mit elbow und L
 
-    delta = acos((122 - z) / L) * (180 / pi);   % Winkel zwischen L und Base
+    delta = acosd((122 - z) / L);   % Winkel zwischen L und Base
 
  %######################################################################################################################
 
    % Berechnung der Gelenk-Winkel für den Roboter:
 
-    baserot = atan(rotY / rotX) * (180 / pi);  %z=141.9! fürs greifen
+    baserot = atand(rotY / rotX);  %z=141.9! fürs greifen
 
     if winkel == 90;       % 90° = Greifbedingung
       wrist = baserot;   % counterrotation der wrist um weiterhin greifen zu können (nur zum greifen benötigt)
     end
 
-    elbow = (pi - acos((a1^2 + a2^2 - L^2) / (2 * a1 * a2))) * (180 / pi); % elbow-Winkel
+    elbow = (180 - acosd((a1^2 + a2^2 - L^2) / (2 * a1 * a2))); % elbow-Winkel
 
     shoulder = 180 - delta - phi; % shoulder-winkel
 
