@@ -1,12 +1,12 @@
 %#######################################################################################################################
 %
 % Funktion zum universalen Bewegen des Roboters
-% Eingabe: x,y,z Koordinaten eines Punktes, Winkel der Hand zum Boden
+% Eingabe: x,y,z-koordinaten eines Punktes, Winkel der Hand zum Boden
 % Koordinaten werden in Winkel des Roboterarms übersetzt, um gezielt Punkte anzusteuern
 % Der Winkel kann verwendet werden, um die Hand je nach Aufgabe verschieden auszurichten
 %
 % PST Gruppenübung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
-% V2: 21.12.2019
+% V2: 22.12.2019
 %
 %#######################################################################################################################
 
@@ -16,18 +16,18 @@ function Rob_move(x, y, z, winkel, rob)
 
     a1 = 166;     % Länge: shoulder to elbow
     a2 = 218;     % Länge: elbow to wrist
-    a3 = 101;     % Länge: wrist to finger
-    a4 = 28.9;    % Länge: finger bis grippoint
+    %a3 = 101;     % Länge: wrist to finger
+    %a4 = 28.9;    % Länge: finger bis grippoint
 
-    rotY = y;     % getrennter y-Wert zum rotieren der Base
     rotX = x;     % getrennter x-Wert zum rotieren der Base
+    rotY = y;     % getrennter y-Wert zum rotieren der Base
 
-    x = abs(x) - cosd(winkel) * (a3 + a4);   % neuer x- und y-Werte in Abhängigkeit von Hand-winkel
-    y = abs(y) - cosd(winkel) * (a3 + a4);   % Länge des Arms wird berücksichtigt
+    x = abs(x) - ((129.9 * abs(x) * cosd(winkel))/sqrt(x^2 + y^2));   % neue x- und y-Werte in Abhängigkeit von Hand-winkel
+    y = abs(y) - ((129.9 * abs(y) * cosd(winkel))/sqrt(x^2 + y^2));   % Länge des Armes wird berücksichtigt
 
-    z = (sind(winkel) * (a3 + a4)) + z;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
+    z = (sind(winkel) * 129.9) + z;   % z-Koordinate des grippoints unter Berücksichtigung des Hand-winkels
 
-    hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 180=scannen
+    hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 0=scannen
 
  %######################################################################################################################
 
@@ -43,9 +43,9 @@ function Rob_move(x, y, z, winkel, rob)
 
    % Berechnung der Gelenk-Winkel für den Roboter:
 
-    baserot = atand(rotY / rotX);  %z=141.9! fürs greifen
+    baserot = atand(rotY / rotX);  % Drehung der Basis, abhängig von den ursprünglichen x,y Koordinaten
 
-    if winkel == 90;       % 90° = Greifbedingung
+    if winkel == 90;     % 90° = Greifbedingung
       wrist = baserot;   % counterrotation der wrist um weiterhin greifen zu können (nur zum greifen benötigt)
     end
 
