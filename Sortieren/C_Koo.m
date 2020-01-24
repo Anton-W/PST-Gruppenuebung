@@ -8,9 +8,9 @@
 %
 %##########################################################################
 
-function TK = C_Koo(W1,W2)
+function TK = C_Koo(C1,C2)
 
-switch W1
+switch C1
     case 0
         K = [];
     case 1
@@ -33,7 +33,7 @@ switch W1
         K = [250,-60];
 end
 
-switch W2
+switch C2
     case 0
         J = [];
     case 1
@@ -56,6 +56,6 @@ switch W2
         J = [250,-60];
 end
 
-TK = [J,K];
+TK = [K,J];
 
 end

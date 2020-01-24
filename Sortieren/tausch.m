@@ -9,7 +9,7 @@
 %und umgekehrt. Die Farbwerte dürfen nicht identisch sein.
 
 
-function tmatrix = tausch(matrix1,matrix2)
+function tmatrix = tausch(matrix1,matrix2,rob)
 tmatrix=matrix1;
 matrixfeld=[1,2,3;4,5,6;7,8,9];
 %matrix1 Farbmatrix, momentane Anordnung der Würfel
@@ -31,7 +31,7 @@ for zeile=1:3
                   %Vergleich der Position 1 und 2 und prüfung ob Zahlen
                   %identisch sind
                   %disp([num2str([zeile,spalte]),' Tauschbar mit ',num2str([zeile2,spalte2])]);
-   
+                   
                    placeholder = matrix1(zeile,spalte);
                    placeholder2 = matrix1(zeile2,spalte2);
                    tmatrix(zeile2,spalte2)=placeholder;
@@ -46,9 +46,11 @@ for zeile=1:3
                   % disp(tmatrix);
                   % disp('----');
                   
-                   %HIER VROB TAUSCHFUNKTION EINFÜGEN
+                  C_Trade(W1,W2,rob)
+ 
+                   %HIER VROB TAUSCHFUNKTION EINFÜGEN - Done
                    
-                   tausch(tmatrix,matrix2);
+                   tausch(tmatrix,matrix2,rob);
                    %Rekursiver Algorithmus, ist kein Tauschpartner
                    %vorhanden wir die Funktion nach dem letzten Tausch
                    %nicht erneut aufgerufen
