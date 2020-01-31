@@ -1,12 +1,12 @@
-%##########################################################################
-%
 % Automatisierter Scanablauf für den Farbscanner
 % Bei Aufruf wird die Würfel-Matrix einmal vollständig gescannt
 % Gibt Übersicht über die bestehenden Würfel-Farben zum Programm Beginn
 %
-% PST-Gruppenübung
+%##########################################################################
+
+%##########################################################################
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % 17.01.2020
-%
 %##########################################################################
 
 function FM = M_Scan(rob)   % Scanner-Position = x + 43.5

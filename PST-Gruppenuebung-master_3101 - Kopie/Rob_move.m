@@ -1,14 +1,13 @@
-%#######################################################################################################################
-%
 % Funktion zum universalen Bewegen des Roboters
-% Eingabe: x,y,z-koordinaten eines Punktes, Winkel der Hand zum Boden
+% Input: x,y,z-koordinaten eines Punktes, Winkel der Hand zum Boden
 % Koordinaten werden in Winkel des Roboterarms übersetzt, um gezielt Punkte anzusteuern
 % Der Winkel kann verwendet werden, um die Hand je nach Aufgabe verschieden auszurichten
 %
+%##########################################################################
+
 % PST Gruppenübung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % V2: 22.12.2019
-%
-%#######################################################################################################################
+%##########################################################################
 
 function Rob_move(x, y, z, winkel, rob)
 
@@ -29,7 +28,7 @@ function Rob_move(x, y, z, winkel, rob)
 
     hand2groundAng = (winkel + 90);  % Einstellen des Winkels der Hand zum Boden, 90=greifen, 0=scannen
 
- %######################################################################################################################
+ %#########################################################################
 
   % bestimmen von längen und Winkeln, die zur Berechnung der Gelenk-winkel nötig sind:
 
@@ -39,7 +38,7 @@ function Rob_move(x, y, z, winkel, rob)
 
     delta = acosd((122 - z) / L);   % Winkel zwischen L und Base
 
- %######################################################################################################################
+ %#########################################################################
 
    % Berechnung der Gelenk-Winkel für den Roboter:
 
@@ -57,7 +56,7 @@ function Rob_move(x, y, z, winkel, rob)
 
     hand = hand2groundAng - shoulder - elbow; % hand-winkel, variabel durch hand2groundAng
 
- %######################################################################################################################
+ %#########################################################################
 
   % Ausgabe & Movement-Command:
 

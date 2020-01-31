@@ -1,12 +1,10 @@
+% Wandelt Standart-Koordinaten in Scan-Koordinaten um und führt einen Scan durch.
+% Es wird berücksichtigen, dass der Scanner um 43.5 mm versetz am Roboter angebracht ist
+%
 %##########################################################################
-%
-% Wandelt Standart-Koordinaten in Scan-Koordinaten um und führt einen Scan
-% durch. Es wird berücksichtigen, dass der Scanner um 43.5 mm 
-% versetz am Roboter angebracht ist
-%
-% PST- Gruppenübung
-%17.01.2020
-%
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
+% 17.01.2020
 %##########################################################################
 
 function F = Scan_Koo(x,y,z,winkel,rob)

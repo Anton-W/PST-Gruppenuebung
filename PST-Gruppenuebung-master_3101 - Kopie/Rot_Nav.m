@@ -1,9 +1,10 @@
-%##########################################################################
-%
 % Navigation des Drehvorgangs
-% 
 % Input: Nummer des Würfels, Soll-Farbwert
 %
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
+% 24.01.2020
 %##########################################################################
 
 function Rot_Nav (Cu,SF,rob)   

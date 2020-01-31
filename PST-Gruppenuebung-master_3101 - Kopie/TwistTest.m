@@ -1,3 +1,7 @@
+% gescripteter Test zum drehen eines Würfels
+%
+%##########################################################################
+
 function TwistTest(rob)
     Rob_move(370,-60,12,90,rob);
     rob.closeHand;

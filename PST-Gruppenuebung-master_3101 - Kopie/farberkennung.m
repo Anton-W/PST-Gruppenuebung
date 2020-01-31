@@ -1,13 +1,16 @@
-%#################################################################################################################################################
+% Funktion zur Interpretation eines RGB Farbcodes. 
+% Wandelt eine Vektor mit RGB Farbwerten in die entsprechende Farbe um.
 %
-% Funktion zur Interpretation eines RGB Farbcodes. Wandelt eine Vektor mit RGB Farbwerten in die entsprechende Farbe um.
+% Input: RGB Vektor in der Form [R,G,B]
 %
+%##########################################################################
+
+%##########################################################################
 % PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % Aufgabe Sensorinterpretation
 % 22.11.2019
 % V2
-%
-%#################################################################################################################################################
+%##########################################################################
 
 % Bestimmung groesster, kleinster und mittlerer Farbwert und Positionen im Vektor:
 
@@ -26,14 +29,13 @@ function farbe = farberkennung(farbwerte)
         mittel = farbwerte(3);
     end
     
- %################################################################################################################################################
-
+ %#########################################################################
  % Bestimmen der Differenzen zwischen den Farbwerten zur Einteilung in eventuelle Sonderfaelle:
 
     differenzGK = Maxi - Mini;           % Differenz groeßter / kleinster Wert
     differenzMK = Maxi - mittel;         % Differenz groeßter / mittlerer Wert
 
- %################################################################################################################################################
+ %#########################################################################
 
  % Einteilung in die vier Kategorien entsprechend der Farbwerte
 

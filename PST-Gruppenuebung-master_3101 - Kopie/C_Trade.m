@@ -1,9 +1,10 @@
-%##########################################################################
-%
 % Funktion, die zwei Würfel tauscht
-% Input: W1, W2 die getsucht werden sollen
-% 24.01.2020
+% Input: W1, W2 die getauscht werden sollen
 %
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
+% 24.01.2020
 %##########################################################################
 
 function C_Trade(C1,C2,rob)

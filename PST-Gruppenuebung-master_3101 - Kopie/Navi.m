@@ -1,8 +1,9 @@
+% Navigiert den Tausch- und Drehvorgang
+%
 %##########################################################################
-%
-% Zeug
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % 24.01.2020
-%
 %##########################################################################
 
 function Navi(SM,rob)

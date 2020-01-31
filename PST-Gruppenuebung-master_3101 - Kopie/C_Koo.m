@@ -1,9 +1,10 @@
-%##########################################################################
-%
 % Hält die Würfelkoordinaten die zum tauschen gebraucht werden
 % Gibt die Koordinaten von zwei tauschbaren Würfeln zurück
+% Input: Vektor mit einem oder zwei Würfeln in der Form [C1,C2]
 %
-% PST Gruppenübung
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % 17.01.2020
 %
 %##########################################################################

@@ -1,12 +1,18 @@
-%##########################################################################
-%INPUT: FARBMATRIX, SOLLMATRIX
-%17.01.2020
 %Sucht passende Tauschpartner in der Farbmatrix und Tauscht diese Digital
 %und Physisch durch aufrufen der Tauschfunktion.
 %Funktion geht für jeden Matrixwert alle darauf folgenden Farbwerte durch
 %und prüft,ob diese passende Tauschpartner sind. Dabei muss die Erste
 %Position in der Farbmatrix dem Sollwert der Zweiten Position entsprechen
 %und umgekehrt. Die Farbwerte dürfen nicht identisch sein.
+%
+%INPUT: FARBMATRIX, SOLLMATRIX
+%
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
+% 17.01.2020
+%##########################################################################
+
 
 
 function tmatrix = tausch(matrix1,matrix2,rob)

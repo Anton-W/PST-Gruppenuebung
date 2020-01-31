@@ -1,8 +1,9 @@
-%##########################################################################
-%
 % Drehen des Würfels um seine eigene Achse, um alle Farben zu erreichen
+% Funktionsintern verwendet
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % 24.01.2020
-%
 %##########################################################################
 
 function C_Rot (rob)

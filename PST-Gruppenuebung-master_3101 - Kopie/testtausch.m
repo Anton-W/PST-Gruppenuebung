@@ -1,4 +1,4 @@
-%##########################################################################
+%???
 %INPUT: FARBMATRIX, SOLLMATRIX
 %17.01.2020
 %Sucht passende Tauschpartner in der Farbmatrix und Tauscht diese Digital

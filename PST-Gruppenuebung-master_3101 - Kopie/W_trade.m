@@ -1,11 +1,10 @@
-%##########################################################################
-%
 % Hält die Würfelkoordinaten die zum tauschen gebraucht werden
 % Gibt die Koordinaten von zwei tauschbaren Würfeln zurück
 %
-% PST Gruppenübung
+%##########################################################################
+
+% PST Gruppenuebung - Paul Böhm, Bennet Gossen, Lasse Jäger, Anton Wöste
 % 17.01.2020
-%
 %##########################################################################
 
 function TK = W_trade(W1,W2)
