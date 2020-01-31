@@ -34,5 +34,8 @@ W32 = Scan_Koo(250,0,z,winkel,rob);
  
 W22 = Scan_Koo(310,0,z,winkel,rob);
     
-FM = [W11,W12,W13;W21,W22,W23;W31,W32,W33];    
+FM = [W11,W12,W13;W21,W22,W23;W31,W32,W33];
+
+Rob_move(270,0,60,90,rob);
+pause(1);
 end
